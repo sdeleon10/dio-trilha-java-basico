@@ -1,0 +1,31 @@
+package com.deleon.banco;
+
+public class BancoApp {
+    public static void main(String[] args) {
+        // Polimorfismo: referências do tipo Conta apontando para tipos diferentes
+        Conta contaJoao   = new ContaCorrente(1001, "João", 1000.00, 500.00, 1.00);
+        Conta contaMaria  = new ContaPoupanca(2001, "Maria", 1500.00);
+
+        // Depósitos
+        contaJoao.depositar(300.00);
+        contaMaria.depositar(200.00);
+
+        // Saques
+        boolean saqueJoao = contaJoao.sacar(1200.00); // usa limite + taxa
+        boolean saqueMaria = contaMaria.sacar(100.00);
+
+        // Transferência
+        boolean transfOk = contaJoao.transferir(contaMaria, 150.00);
+
+        // Resultado
+        System.out.println("Operações:");
+        System.out.println("Saque João: " + (saqueJoao ? "OK" : "Falhou"));
+        System.out.println("Saque Maria: " + (saqueMaria ? "OK" : "Falhou"));
+        System.out.println("Transferência João -> Maria: " + (transfOk ? "OK" : "Falhou"));
+        System.out.println();
+
+        System.out.println("Saldos finais:");
+        System.out.println(contaJoao);
+        System.out.println(contaMaria);
+    }
+}
