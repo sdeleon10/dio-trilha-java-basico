@@ -1,4 +1,4 @@
-package com.deleon.banco;
+package com.Deleon.banco;
 
 public class ContaCorrente extends Conta {
     private final double limite;   // cheque especial
